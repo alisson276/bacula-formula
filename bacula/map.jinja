@@ -1,0 +1,40 @@
+{% set bacula = salt['grains.filter_by']({
+  'Debian': {
+    'user': 'bacula',
+    'group': 'bacula',
+    'client': {
+      'pkg': 'bacula-client',
+      'service': 'bacula-fd',
+      'config': '/etc/bacula/bacula-fd.conf'
+    },
+    'director': {
+      'pkg': 'bacula-director',
+      'service': 'bacula-dir',
+      'config': '/etc/bacula/bacula-dir.conf',
+    },
+    'storage': {
+      'pkg': 'bacula-storage',
+      'service': 'bacula-sd',
+      'config': '/etc/bacula/bacula-sd.conf',
+    }
+  },
+  'RedHat': {
+    'user': 'bacula',
+    'group': 'bacula',
+    'client': {
+      'pkg': 'bacula-client',
+      'service': 'bacula-fd',
+      'config': '/etc/bacula/bacula-fd.conf'
+    },
+    'director': {
+      'pkg': 'bacula-director',
+      'service': 'bacula-dir',
+      'config': '/etc/bacula/bacula-dir.conf',
+    },
+    'storage': {
+      'pkg': 'bacula-storage',
+      'service': 'bacula-sd',
+      'config': '/etc/bacula/bacula-sd.conf',
+    }
+  },
+}, merge=salt['pillar.get']('bacula:lookup')) %}

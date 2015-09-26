@@ -1,0 +1,9 @@
+bacula:
+  # Overrides map.jinja
+  lookup:
+    client:
+      pkg: bacula-fd
+    director:
+      pkg: bacula-dir
+    storage:
+      pkg: bacula-sd
